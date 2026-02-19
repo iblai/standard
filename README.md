@@ -16,6 +16,96 @@
 
 <p align="center">&nbsp;</p>
 
+<h3 align="center"><code>npx iblai agent</code></h3>
+
+```
+  ██╗██████╗ ██╗         █████╗ ██╗
+  ██║██╔══██╗██║        ██╔══██╗██║
+  ██║██████╔╝██║        ███████║██║
+  ██║██╔══██╗██║        ██╔══██║██║
+  ██║██████╔╝███████╗██╗██║  ██║██║
+  ╚═╝╚═════╝ ╚══════╝╚═╝╚═╝  ╚═╝╚═╝
+
+  .iblai Agent Builder
+  Build a portable agent definition — one step at a time.
+
+┌  Let's create your agent  🚀
+│
+  ██░░░░░░░░░░░░░░░░░░░░░░ 7% (1/15)
+
+  ┌──────────────────────────────────────────────┐
+  │  🤖  Agent Info                              │
+  │     Name, description, and metadata          │
+  └──────────────────────────────────────────────┘
+
+│  ◆  Agent name
+│  │  Campus Advisor
+│
+│  ◆  Description
+│  │  Academic advisor for undergrad students
+│
+│  ◇  Version
+│  │  1.0.0
+│
+  ✔ Setting up identity...
+
+│  ✦ Configure Soul section?
+│  │  Yes
+│
+  ███░░░░░░░░░░░░░░░░░░░░░ 13% (2/15)
+
+  ┌──────────────────────────────────────────────┐
+  │  🧠  Soul                                    │
+  │     Voice, temperament, values, ethics       │
+  └──────────────────────────────────────────────┘
+
+│  ◆  Voice — describe tone, register, language style
+│  │  Warm, encouraging, and approachable.
+│
+│  ✦ Add values?
+│  │  Yes
+│
+│  ◆  Enter a core value
+│  │  Student success comes first
+│  ✔  › Student success comes first
+│
+  ✔ Shaping personality...
+
+  ...
+
+  ██████████████░░░░░░░░░░ 60% (9/15)
+
+  ┌──────────────────────────────────────────────┐
+  │  ⚡  Skills                                   │
+  │     Discrete capabilities your agent has     │
+  └──────────────────────────────────────────────┘
+
+│  ⚡ Skill #1
+│  ◆  Skill name
+│  │  Degree Audit
+│  ✔ Skill "Degree Audit" added
+│
+  ✔ Wiring up skills...
+
+  ...
+
+  ████████████████████████ 100% (15/15)
+
+  🎉 All sections complete!
+
+  ┌──────────────────────────────────────────────┐
+  │  📄  Output                                  │
+  │     Save your new .iblai file                │
+  └──────────────────────────────────────────────┘
+
+│  ◆  File path for the .iblai file
+│  │  campus-advisor.iblai
+│
+  ✔ Writing file...
+
+└  ✨ Agent file written to ./campus-advisor.iblai
+```
+
 ---
 
 ## File Structure
@@ -25,6 +115,16 @@ standard/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
+├── cli/                      # Interactive agent builder wizard
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── src/
+│       ├── index.ts          # CLI entry, routing, help screen
+│       ├── agent.ts          # `iblai agent` command
+│       ├── theme.ts          # ibl.ai color palette & animations
+│       ├── logo.ts           # ASCII art gradient logo
+│       ├── wizard.ts         # Wizard step orchestration
+│       └── generator.ts      # Data → .iblai Markdown
 └── library/
     ├── university-advisor.iblai
     ├── customer-service.iblai
@@ -102,6 +202,50 @@ Safety controls applied to every interaction. Contains subsections for **Input F
 ### Visibility & Permissions
 
 Access control for the agent definition. Fields: `view` (`anyone` or `restricted`), `edit` (`anyone` or `restricted`), `editors` (list of emails or groups allowed to edit), `viewers` (list of emails or groups allowed to view).
+
+## CLI — Agent Builder
+
+Build `.iblai` files interactively from your terminal with an animated, step-by-step wizard.
+
+### Quick start
+
+```bash
+cd cli
+npm install
+npm run build
+npm link
+```
+
+Then from anywhere:
+
+```bash
+iblai agent        # Launch the interactive agent builder
+iblai help         # Show available commands
+```
+
+> Once the package is published to npm, you'll be able to run `npx iblai agent` directly.
+
+### What `iblai agent` does
+
+Running `iblai agent` starts a guided wizard that walks you through all 15 sections of the `.iblai` format:
+
+1. **Agent Info** — name, description, picture, version, author
+2. **Soul** — voice, temperament, values, ethical constraints
+3. **Identity** — emoji, theme, persona
+4. **Instructions** — priorities, boundaries, workflow, quality bar
+5. **User Preferences** — tone, output format, language, constraints
+6. **Memory** — persistent facts
+7. **Heartbeat** — cadence and recurring tasks
+8. **Skills** — add multiple skills with IDs, tags, and examples
+9. **Tasks** — scheduled jobs with cron or natural-language frequency
+10. **Tools** — toggle built-in tools on/off
+11. **MCP Servers** — connect external servers
+12. **Secrets** — reference a secrets file
+13. **Knowledge & RAG** — add data source URLs/paths
+14. **Guardrails & Safety** — input/output filters, content policies, blocked topics
+15. **Visibility & Permissions** — view/edit access control
+
+Every section can be skipped. Loop-based sections (skills, tasks, MCP servers, etc.) let you add as many entries as you need. A progress bar tracks where you are. At the end, the wizard writes a ready-to-use `.iblai` file that matches the format in `library/`.
 
 ## Design Principles
 

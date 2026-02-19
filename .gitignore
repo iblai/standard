@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+cli/dist/
+
+# Secrets — never commit
+.secrets
+*.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor state
+*.swp
+*.swo
+*~
+.idea/
+
+# npm
+*.tgz
+npm-debug.log*
+
+# Generated agent files (keep library/ examples only)
+*.iblai
+!library/*.iblai
