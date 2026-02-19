@@ -16,7 +16,7 @@
 
 <p align="center">&nbsp;</p>
 
-<h3 align="center"><code>npx iblai agent</code></h3>
+<h3 align="center"><code>iblai agent</code></h3>
 
 ```
   ██╗██████╗ ██╗         █████╗ ██╗

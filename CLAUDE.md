@@ -27,7 +27,7 @@ This repository defines the `.iblai` agent file format — a Markdown-based port
 
 ## CLI
 
-`cli/` contains an interactive TUI wizard (TypeScript, `@clack/prompts`, `chalk`) that generates `.iblai` files. Build with `cd cli && npm install && npm run build`. Run `npx iblai agent` to launch the builder wizard, or `npx iblai help` to see available commands. Entry point is `src/index.ts` (command router), wizard logic lives in `src/agent.ts` + `src/wizard.ts`, output generation in `src/generator.ts`.
+`cli/` contains an interactive TUI wizard (TypeScript, `@clack/prompts`, `chalk`) that generates `.iblai` files. Build with `cd cli && npm install && npm run build && npm link`. Run `iblai agent` to launch the builder wizard, or `iblai help` to see available commands. Entry point is `src/index.ts` (command router), wizard logic lives in `src/agent.ts` + `src/wizard.ts`, output generation in `src/generator.ts`.
 
 ## Conventions
 
