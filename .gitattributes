@@ -1,0 +1,2 @@
+# Treat .iblai files as Markdown for syntax highlighting on GitHub and other platforms
+*.iblai linguist-language=Markdown
