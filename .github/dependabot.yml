@@ -4,4 +4,12 @@ updates:
     directory: "/cli"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+      npm-major:
+        update-types:
+          - "major"
